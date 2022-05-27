@@ -1,0 +1,163 @@
+[
+  {
+    "id": 0,
+    "title": "Карта мира",
+    "parentId": null,
+    "coordinates": {
+      "x": 0,
+      "y": 0
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 1,
+    "title": "Венгрия",
+    "contentId": 2,
+    "parentId": 0,
+    "coordinates": {
+      "x": -102,
+      "y": 179
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Беларусь",
+    "contentId": 4,
+    "parentId": 0,
+    "coordinates": {
+      "x": -61,
+      "y": 199
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "top",
+        "inside": true
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Финляндия",
+    "contentId": 3,
+    "parentId": 0,
+    "coordinates": {
+      "x": -66,
+      "y": 223
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top",
+        "inside": true
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Турция",
+    "contentId": 1,
+    "parentId": 0,
+    "coordinates": {
+      "x": -3,
+      "y": 154
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "bottom"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Бангладеш",
+    "contentId": 5,
+    "parentId": 0,
+    "coordinates": {
+      "x": 284,
+      "y": 103
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "bottom"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "title": "г. Гатчина, РФ",
+    "contentId": 6,
+    "parentId": 0,
+    "coordinates": {
+      "x": -39,
+      "y": 217
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "г. Курчатов, РФ",
+    "contentId": 7,
+    "parentId": 0,
+    "coordinates": {
+      "x": -19,
+      "y": 202
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "bottom"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "г. Певек, РФ",
+    "contentId": 8,
+    "parentId": 0,
+    "coordinates": {
+      "x": 443,
+      "y": 227
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": "Куба",
+    "contentId": 0,
+    "parentId": 0,
+    "coordinates": {
+      "x": -613,
+      "y": 104
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "bottom"
+      }
+    }
+  }
+]
