@@ -1,5 +1,5 @@
 // Global
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css, keyframes } from "styled-components";
 
 // Swiper
@@ -25,7 +25,8 @@ import historyList from "@/common/data/historyList.json";
 
 const Timeline = () => {
 
-  const [activeFilter, setActiveFilter] = useState(false)
+  const [sortedArray, setSortedArray] = useState(historyList);
+  const [activeFilter, setActiveFilter] = useState("ALL")
   // Swiper store
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
@@ -52,23 +53,32 @@ const Timeline = () => {
     // centerPadding: "200px"
   }
 
-
   const openModal = (id: number) => {
     setPopupVisibility(true)
     setCurrentSlide(id - 1)
   }
-  const isEmptyItem = (historyList: HistoryObject[], i: number) => {
-    return historyList[i]?.year === historyList[i - 1]?.year
+  const isEmptyItem = (sortedArray: HistoryObject[], i: number) => {
+    return sortedArray[i]?.year === sortedArray[i - 1]?.year
   }
 
-  // const FilterArray = () => {
-  //     historyList.map((item) => {
+  useEffect(() => {
+    FilterArray();
+  }, [activeFilter]);
 
-  //     }
-  // };
+  const FilterArray = () => {
+    if (activeFilter === "ALL") {
+      setSortedArray(historyList);
+    }
+    if (activeFilter === "АО") {
+      setSortedArray(historyList.filter((item) => item.event === "АО"));
+    } 
+    if (activeFilter === "АТЭ") {
+      setSortedArray(historyList.filter((item) => item.event === "АТЭ"));
+    };
+  };
 
   return (
-    <Layout title="История АТЭ">
+    <Layout title={activeFilter === "ALL" ? "События АТЭ и Атомной острасли" : activeFilter === "АО" ? "События Атомной острасли" : "События АТЭ"}>
       <Root>
         
         <Swiper
@@ -116,7 +126,7 @@ const Timeline = () => {
             }
           }}
         >
-          {historyList.map((item: HistoryObject) => (
+          {sortedArray.map((item: HistoryObject) => (
             <SwiperSlide
               key={item.id}
               data-hash={item.id}
@@ -142,7 +152,6 @@ const Timeline = () => {
                     {isActive && (<TopCaption>{item.preview.caption}</TopCaption>)}
                     {/* Текст справа фото у неактивного элемента */}
                     {isNext && (<EventPreview>{item.title}</EventPreview>)}
-                    
                   </Slide>
                   <MiddleWrap>
                     {isActive && (<NumberOfEvents>{item.worldEvents}</NumberOfEvents>)}
@@ -170,10 +179,20 @@ const Timeline = () => {
           <ArrowNext className="navigation_next_arrow swiper-button-next">
             <SlideArrow />
           </ArrowNext>
+          {/* Сортировка */}
           <Sort>
-            <SortItem active={activeFilter} onClick={() => {}}><img src="/images/history/timeline/icon/sort-ate.png" alt="Sort by ATE" /></SortItem>
-            <SortItem active={activeFilter}><img src="/images/history/timeline/icon/sort-ao.png" alt="Sort by AO" /></SortItem>
-            <SortItem active={activeFilter}><img src="/images/history/timeline/icon/sort-all.png" alt="Show ALL" /></SortItem>
+            <SortItem active={activeFilter === "АТЭ"} onClick={() => {
+              setActiveFilter("АТЭ");
+              FilterArray();
+            }}><img src="/images/history/timeline/icon/sort-ate.png" alt="Sort by ATE" /></SortItem>
+            <SortItem active={activeFilter === "АО"} onClick={() => {
+              setActiveFilter("АО");
+              FilterArray();
+            }}><img src="/images/history/timeline/icon/sort-ao.png" alt="Sort by AO" /></SortItem>
+            <SortItem active={activeFilter === "ALL"} onClick={() => {
+              setActiveFilter("ALL");
+              FilterArray();
+            }}><img src="/images/history/timeline/icon/sort-all.png" alt="Show ALL" /></SortItem>
           </Sort>
           {/* Hr */}
           <Hr></Hr>
@@ -204,7 +223,7 @@ const Timeline = () => {
         // simulateTouch={true}
         >
 
-          {historyList.map((item: HistoryObject, i: number) => (
+          {sortedArray.map((item: HistoryObject, i: number) => (
             <SwiperSlide key={item.id}>
               {({ isActive }) => (
                 <>
@@ -219,12 +238,12 @@ const Timeline = () => {
                       color: isActive ? "#000000" : "#707070",
                     }}>
                       {/* Проверка даты */}
-                      {isEmptyItem(historyList, i) ? null : historyList[i].year}
+                      {isEmptyItem(sortedArray, i) ? null : sortedArray[i].year}
                     </MiniDate>
                     {/* Проверка svg */}
                     {isActive
                       ? <EllipseActive />
-                      : isEmptyItem(historyList, i)
+                      : isEmptyItem(sortedArray, i)
                         ? <Ellipse />
                         : <EllipseGray />}
                   </MiniSlide>
@@ -252,13 +271,13 @@ const Timeline = () => {
           }}
         >
           {/* Фото + текст на фото */}
-          <ImgWrapper bg={historyList[currentSlide].preview.image}>
+          <ImgWrapper bg={sortedArray[currentSlide]?.preview?.image}>
             <ImgContainer>
-              <ImgTitle>{historyList[currentSlide].title}</ImgTitle>
+              <ImgTitle>{sortedArray[currentSlide].title}</ImgTitle>
               <Grid>
                 <Col>
                   <Label>год</Label>
-                  <Text>{historyList[currentSlide].year}</Text>
+                  <Text>{sortedArray[currentSlide].year}</Text>
                 </Col>
               </Grid>
             </ImgContainer>
@@ -266,14 +285,14 @@ const Timeline = () => {
           {/* Параграф 1 */}
           <FirstParagraph>
             <FirstWrapper>
-              <p>{historyList[currentSlide].firstParagraph}</p>
+              <p>{sortedArray[currentSlide].firstParagraph}</p>
             </FirstWrapper>
           </FirstParagraph>
 
           {/* Параграф 2 */}
           <SecondParagraph>
             <SecondWrapper>
-              <p>{historyList[currentSlide].secondParagraph}</p>
+              <p>{sortedArray[currentSlide].secondParagraph}</p>
             </SecondWrapper>
           </SecondParagraph>
 
@@ -284,21 +303,21 @@ const Timeline = () => {
                 <ItemText>Событие в мире науки</ItemText>
                 <ItemFlex>
                   <ItemImage src="/images/history/card/card-1.png" />
-                  <ItemEvent>{historyList[currentSlide].worldEvents}</ItemEvent>
+                  <ItemEvent>{sortedArray[currentSlide].worldEvents}</ItemEvent>
                 </ItemFlex>
               </Item>
               <Item>
                 <ItemText>Численнойсть АО “Атомтехэнерго” на момент события</ItemText>
                 <ItemFlex>
                   <ItemImage src="/images/history/card/card-2.png" />
-                  <ItemEvent>{`${historyList[currentSlide].numberOfEmployees} человек`}</ItemEvent>
+                  <ItemEvent>{`${sortedArray[currentSlide].numberOfEmployees} человек`}</ItemEvent>
                 </ItemFlex>
               </Item>
               {/* <Item>
                 <ItemText>Международный год ООН</ItemText>
                 <ItemFlex>
                   <ItemImage src="/images/history/card/card-3.png" />
-                  <ItemEvent>{historyList[currentSlide].unEvents}</ItemEvent>
+                  <ItemEvent>{sortedArray[currentSlide].unEvents}</ItemEvent>
                 </ItemFlex>
               </Item> */}
             </ItemsWrapper>
@@ -306,7 +325,7 @@ const Timeline = () => {
           {/* карусель */}
           <CarouselWrapper>
             <Carousel {...carouselSettings}>
-              {historyList[currentSlide].images.map((item, i) => (
+              {sortedArray[currentSlide].images.map((item, i) => (
                 <SlideWrapper key={i}>
                   <Image
                     alt="slider_image"
@@ -373,8 +392,8 @@ const SortItem = styled('div')`
   align-self: center;
   /* height: 77px; */
   /* width: 77px; */
-  width: 4.5vw;
-  height: 4.5vw;
+  width: 5vw;
+  height: 5vw;
   border-radius: 50%;
   background-color: rgba(113, 181, 244, 0.55);
   margin-bottom: 10px;
@@ -401,8 +420,8 @@ const ImageIcon = styled('div')`
   align-self: center;
   /* height: 77px; */
   /* width: 77px; */
-  width: 4.5vw;
-  height: 4.5vw;
+  width: 5vw;
+  height: 5vw;
   border-radius: 50%;
   background-color: rgba(113, 181, 244, 0.55);
 `
