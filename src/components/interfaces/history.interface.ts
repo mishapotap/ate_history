@@ -15,4 +15,5 @@ export interface HistoryObject {
     sliderIcon: string;
     unEvents: string;
     images: string[];
+    event: string;
 }

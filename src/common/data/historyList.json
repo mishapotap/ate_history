@@ -17,7 +17,8 @@
       "/images/history/timeline/1/slide-01.jpg",
       "/images/history/timeline/1/slide-02.jpg",
       "/images/history/timeline/1/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 2,
@@ -37,7 +38,8 @@
       "/images/history/timeline/2/slide-01.jpg",
       "/images/history/timeline/2/slide-02.jpg",
       "/images/history/timeline/2/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 3,
@@ -57,7 +59,8 @@
       "/images/history/timeline/3/slide-01.jpg",
       "/images/history/timeline/3/slide-02.jpg",
       "/images/history/timeline/3/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
     {
     "id": 4,
@@ -77,7 +80,8 @@
       "/images/history/timeline/4/slide-01.jpg",
       "/images/history/timeline/4/slide-02.jpg",
       "/images/history/timeline/4/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 5,
@@ -97,7 +101,8 @@
       "/images/history/timeline/5/slide-01.jpg",
       "/images/history/timeline/5/slide-02.jpg",
       "/images/history/timeline/5/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 6,
@@ -117,7 +122,8 @@
       "/images/history/timeline/6/slide-01.jpg",
       "/images/history/timeline/6/slide-02.jpg",
       "/images/history/timeline/6/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 7,
@@ -137,7 +143,8 @@
       "/images/history/timeline/7/slide-01.jpg",
       "/images/history/timeline/7/slide-02.jpg",
       "/images/history/timeline/7/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 8,
@@ -157,7 +164,8 @@
       "/images/history/timeline/8/slide-01.jpg",
       "/images/history/timeline/8/slide-02.jpg",
       "/images/history/timeline/8/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 9,
@@ -177,7 +185,8 @@
       "/images/history/timeline/9/slide-01.jpg",
       "/images/history/timeline/9/slide-02.jpg",
       "/images/history/timeline/9/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
    {
     "id": 10,
@@ -197,7 +206,8 @@
       "/images/history/timeline/10/slide-01.jpg",
       "/images/history/timeline/10/slide-02.jpg",
       "/images/history/timeline/10/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
      {
     "id": 11,
@@ -217,7 +227,8 @@
       "/images/history/timeline/11/slide-01.jpg",
       "/images/history/timeline/11/slide-02.jpg",
       "/images/history/timeline/11/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 12,
@@ -237,7 +248,8 @@
       "/images/history/timeline/12/slide-01.jpg",
       "/images/history/timeline/12/slide-02.jpg",
       "/images/history/timeline/12/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
     {
     "id": 13,
@@ -257,7 +269,8 @@
       "/images/history/timeline/13/slide-01.jpg",
       "/images/history/timeline/13/slide-02.jpg",
       "/images/history/timeline/13/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
    {
     "id": 14,
@@ -277,7 +290,8 @@
       "/images/history/timeline/14/slide-01.jpg",
       "/images/history/timeline/14/slide-02.jpg",
       "/images/history/timeline/14/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 15,
@@ -297,7 +311,8 @@
       "/images/history/timeline/15/slide-01.jpg",
       "/images/history/timeline/15/slide-02.jpg",
       "/images/history/timeline/15/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 16,
@@ -317,7 +332,8 @@
       "/images/history/timeline/16/slide-01.jpg",
       "/images/history/timeline/16/slide-02.jpg",
       "/images/history/timeline/16/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 17,
@@ -337,7 +353,8 @@
       "/images/history/timeline/17/slide-01.jpg",
       "/images/history/timeline/17/slide-02.jpg",
       "/images/history/timeline/17/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 18,
@@ -357,7 +374,8 @@
       "/images/history/timeline/18/slide-01.jpg",
       "/images/history/timeline/18/slide-02.jpg",
       "/images/history/timeline/18/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 19,
@@ -377,7 +395,8 @@
       "/images/history/timeline/19/slide-01.jpg",
       "/images/history/timeline/19/slide-02.jpg",
       "/images/history/timeline/19/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 20,
@@ -397,7 +416,8 @@
       "/images/history/timeline/20/slide-01.jpg",
       "/images/history/timeline/20/slide-02.jpg",
       "/images/history/timeline/20/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 21,
@@ -417,7 +437,8 @@
       "/images/history/timeline/21/slide-01.jpg",
       "/images/history/timeline/21/slide-02.jpg",
       "/images/history/timeline/21/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 22,
@@ -437,7 +458,8 @@
       "/images/history/timeline/22/slide-01.jpg",
       "/images/history/timeline/22/slide-02.jpg",
       "/images/history/timeline/22/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 23,
@@ -457,7 +479,8 @@
       "/images/history/timeline/23/slide-01.jpg",
       "/images/history/timeline/23/slide-02.jpg",
       "/images/history/timeline/23/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
       {
     "id": 24,
@@ -477,7 +500,8 @@
       "/images/history/timeline/24/slide-01.jpg",
       "/images/history/timeline/24/slide-02.jpg",
       "/images/history/timeline/24/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 25,
@@ -497,7 +521,8 @@
       "/images/history/timeline/25/slide-01.jpg",
       "/images/history/timeline/25/slide-02.jpg",
       "/images/history/timeline/25/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 26,
@@ -517,7 +542,8 @@
       "/images/history/timeline/26/slide-01.jpg",
       "/images/history/timeline/26/slide-02.jpg",
       "/images/history/timeline/26/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 27,
@@ -537,7 +563,8 @@
       "/images/history/timeline/27/slide-01.jpg",
       "/images/history/timeline/27/slide-02.jpg",
       "/images/history/timeline/27/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 28,
@@ -557,7 +584,8 @@
       "/images/history/timeline/28/slide-01.jpg",
       "/images/history/timeline/28/slide-02.jpg",
       "/images/history/timeline/28/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 29,
@@ -577,7 +605,8 @@
       "/images/history/timeline/29/slide-01.jpg",
       "/images/history/timeline/29/slide-02.jpg",
       "/images/history/timeline/29/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 30,
@@ -597,7 +626,8 @@
       "/images/history/timeline/30/slide-01.jpg",
       "/images/history/timeline/30/slide-02.jpg",
       "/images/history/timeline/30/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 31,
@@ -617,7 +647,8 @@
       "/images/history/timeline/31/slide-01.jpg",
       "/images/history/timeline/31/slide-02.jpg",
       "/images/history/timeline/31/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 32,
@@ -637,7 +668,8 @@
       "/images/history/timeline/32/slide-01.jpg",
       "/images/history/timeline/32/slide-02.jpg",
       "/images/history/timeline/32/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 33,
@@ -657,7 +689,8 @@
       "/images/history/timeline/33/slide-01.jpg",
       "/images/history/timeline/33/slide-02.jpg",
       "/images/history/timeline/33/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 34,
@@ -677,7 +710,8 @@
       "/images/history/timeline/34/slide-01.jpg",
       "/images/history/timeline/34/slide-02.jpg",
       "/images/history/timeline/34/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 35,
@@ -697,7 +731,8 @@
       "/images/history/timeline/35/slide-01.jpg",
       "/images/history/timeline/35/slide-02.jpg",
       "/images/history/timeline/35/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 36,
@@ -717,7 +752,8 @@
       "/images/history/timeline/36/slide-01.jpg",
       "/images/history/timeline/36/slide-02.jpg",
       "/images/history/timeline/36/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 37,
@@ -737,7 +773,8 @@
       "/images/history/timeline/37/slide-01.jpg",
       "/images/history/timeline/37/slide-02.jpg",
       "/images/history/timeline/37/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 38,
@@ -757,7 +794,8 @@
       "/images/history/timeline/38/slide-01.jpg",
       "/images/history/timeline/38/slide-02.jpg",
       "/images/history/timeline/38/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 39,
@@ -777,7 +815,8 @@
       "/images/history/timeline/39/slide-01.jpg",
       "/images/history/timeline/39/slide-02.jpg",
       "/images/history/timeline/39/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 40,
@@ -797,7 +836,8 @@
       "/images/history/timeline/40/slide-01.jpg",
       "/images/history/timeline/40/slide-02.jpg",
       "/images/history/timeline/40/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 41,
@@ -817,7 +857,8 @@
       "/images/history/timeline/41/slide-01.jpg",
       "/images/history/timeline/41/slide-02.jpg",
       "/images/history/timeline/41/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 42,
@@ -837,7 +878,8 @@
       "/images/history/timeline/42/slide-01.jpg",
       "/images/history/timeline/42/slide-02.jpg",
       "/images/history/timeline/42/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 43,
@@ -857,7 +899,8 @@
       "/images/history/timeline/43/slide-01.jpg",
       "/images/history/timeline/43/slide-02.jpg",
       "/images/history/timeline/43/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 44,
@@ -877,7 +920,8 @@
       "/images/history/timeline/44/slide-01.jpg",
       "/images/history/timeline/44/slide-02.jpg",
       "/images/history/timeline/44/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 45,
@@ -897,7 +941,8 @@
       "/images/history/timeline/45/slide-01.jpg",
       "/images/history/timeline/45/slide-02.jpg",
       "/images/history/timeline/45/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 46,
@@ -917,7 +962,8 @@
       "/images/history/timeline/46/slide-01.jpg",
       "/images/history/timeline/46/slide-02.jpg",
       "/images/history/timeline/46/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 47,
@@ -937,14 +983,15 @@
       "/images/history/timeline/47/slide-01.jpg",
       "/images/history/timeline/47/slide-02.jpg",
       "/images/history/timeline/47/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 48,
-    "title": "Открытие промышленного производства сверхпроводящих материалов",
+    "title": "Первый международный форум «Атомэкспо-2009», организованный Госкорпорацией «Росатом»",
     "preview": {
       "image": "/images/history/timeline/48/preview.jpg",
-      "caption": "Сверхпроводник производства ЧМЗ"
+      "caption": "Форум"
     },
     "year": "2009",
     "firstParagraph": "В Центральном выставочном комплексе «Экспоцентр» открылся первый международный форум «Атомэкспо-2009», организованный Госкорпорацией «Росатом».",
@@ -957,7 +1004,8 @@
       "/images/history/timeline/48/slide-01.jpg",
       "/images/history/timeline/48/slide-02.jpg",
       "/images/history/timeline/48/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 49,
@@ -977,7 +1025,8 @@
       "/images/history/timeline/49/slide-01.jpg",
       "/images/history/timeline/49/slide-02.jpg",
       "/images/history/timeline/49/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 50,
@@ -997,7 +1046,8 @@
       "/images/history/timeline/50/slide-01.jpg",
       "/images/history/timeline/50/slide-02.jpg",
       "/images/history/timeline/50/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 51,
@@ -1017,7 +1067,8 @@
       "/images/history/timeline/51/slide-01.jpg",
       "/images/history/timeline/51/slide-02.jpg",
       "/images/history/timeline/51/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 52,
@@ -1037,7 +1088,8 @@
       "/images/history/timeline/52/slide-01.jpg",
       "/images/history/timeline/52/slide-02.jpg",
       "/images/history/timeline/52/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 53,
@@ -1057,7 +1109,8 @@
       "/images/history/timeline/53/slide-01.jpg",
       "/images/history/timeline/53/slide-02.jpg",
       "/images/history/timeline/53/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 54,
@@ -1077,7 +1130,8 @@
       "/images/history/timeline/54/slide-01.jpg",
       "/images/history/timeline/54/slide-02.jpg",
       "/images/history/timeline/54/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 55,
@@ -1097,7 +1151,8 @@
       "/images/history/timeline/55/slide-01.jpg",
       "/images/history/timeline/55/slide-02.jpg",
       "/images/history/timeline/55/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 56,
@@ -1117,7 +1172,8 @@
       "/images/history/timeline/56/slide-01.jpg",
       "/images/history/timeline/56/slide-02.jpg",
       "/images/history/timeline/56/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 57,
@@ -1137,7 +1193,8 @@
       "/images/history/timeline/57/slide-01.jpg",
       "/images/history/timeline/57/slide-02.jpg",
       "/images/history/timeline/57/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 58,
@@ -1157,7 +1214,8 @@
       "/images/history/timeline/58/slide-01.jpg",
       "/images/history/timeline/58/slide-02.jpg",
       "/images/history/timeline/58/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 59,
@@ -1177,7 +1235,8 @@
       "/images/history/timeline/59/slide-01.jpg",
       "/images/history/timeline/59/slide-02.jpg",
       "/images/history/timeline/59/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 60,
@@ -1197,7 +1256,8 @@
       "/images/history/timeline/60/slide-01.jpg",
       "/images/history/timeline/60/slide-02.jpg",
       "/images/history/timeline/60/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 61,
@@ -1217,7 +1277,8 @@
       "/images/history/timeline/61/slide-01.jpg",
       "/images/history/timeline/61/slide-02.jpg",
       "/images/history/timeline/61/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 62,
@@ -1237,7 +1298,8 @@
       "/images/history/timeline/62/slide-01.jpg",
       "/images/history/timeline/62/slide-02.jpg",
       "/images/history/timeline/62/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 63,
@@ -1257,7 +1319,8 @@
       "/images/history/timeline/63/slide-01.jpg",
       "/images/history/timeline/63/slide-02.jpg",
       "/images/history/timeline/63/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 64,
@@ -1277,7 +1340,8 @@
       "/images/history/timeline/64/slide-01.jpg",
       "/images/history/timeline/64/slide-02.jpg",
       "/images/history/timeline/64/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 65,
@@ -1297,7 +1361,8 @@
       "/images/history/timeline/65/slide-01.jpg",
       "/images/history/timeline/65/slide-02.jpg",
       "/images/history/timeline/65/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 66,
@@ -1317,7 +1382,8 @@
       "/images/history/timeline/66/slide-01.jpg",
       "/images/history/timeline/66/slide-02.jpg",
       "/images/history/timeline/66/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 67,
@@ -1337,7 +1403,8 @@
       "/images/history/timeline/67/slide-01.jpg",
       "/images/history/timeline/67/slide-02.jpg",
       "/images/history/timeline/67/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 68,
@@ -1357,7 +1424,8 @@
       "/images/history/timeline/68/slide-01.jpg",
       "/images/history/timeline/68/slide-02.jpg",
       "/images/history/timeline/68/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 69,
@@ -1377,7 +1445,8 @@
       "/images/history/timeline/69/slide-01.jpg",
       "/images/history/timeline/69/slide-02.jpg",
       "/images/history/timeline/69/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 70,
@@ -1397,7 +1466,8 @@
       "/images/history/timeline/70/slide-01.jpg",
       "/images/history/timeline/70/slide-02.jpg",
       "/images/history/timeline/70/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 71,
@@ -1417,7 +1487,8 @@
       "/images/history/timeline/71/slide-01.jpg",
       "/images/history/timeline/71/slide-02.jpg",
       "/images/history/timeline/71/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 72,
@@ -1437,7 +1508,8 @@
       "/images/history/timeline/72/slide-01.jpg",
       "/images/history/timeline/72/slide-02.jpg",
       "/images/history/timeline/72/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 73,
@@ -1457,7 +1529,8 @@
       "/images/history/timeline/73/slide-01.jpg",
       "/images/history/timeline/73/slide-02.jpg",
       "/images/history/timeline/73/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 74,
@@ -1477,7 +1550,8 @@
       "/images/history/timeline/74/slide-01.jpg",
       "/images/history/timeline/74/slide-02.jpg",
       "/images/history/timeline/74/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 75,
@@ -1497,7 +1571,8 @@
       "/images/history/timeline/75/slide-01.jpg",
       "/images/history/timeline/75/slide-02.jpg",
       "/images/history/timeline/75/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 76,
@@ -1517,7 +1592,8 @@
       "/images/history/timeline/76/slide-01.jpg",
       "/images/history/timeline/76/slide-02.jpg",
       "/images/history/timeline/76/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 77,
@@ -1537,7 +1613,8 @@
       "/images/history/timeline/77/slide-01.jpg",
       "/images/history/timeline/77/slide-02.jpg",
       "/images/history/timeline/77/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 78,
@@ -1557,7 +1634,8 @@
       "/images/history/timeline/78/slide-01.jpg",
       "/images/history/timeline/78/slide-02.jpg",
       "/images/history/timeline/78/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 79,
@@ -1577,7 +1655,8 @@
       "/images/history/timeline/79/slide-01.jpg",
       "/images/history/timeline/79/slide-02.jpg",
       "/images/history/timeline/79/slide-03.jpg"
-    ]
+    ],
+	"event":"АО"
   },
   {
     "id": 80,
@@ -1597,7 +1676,8 @@
       "/images/history/timeline/80/slide-01.jpg",
       "/images/history/timeline/80/slide-02.jpg",
       "/images/history/timeline/80/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   },
   {
     "id": 81,
@@ -1617,6 +1697,7 @@
       "/images/history/timeline/81/slide-01.jpg",
       "/images/history/timeline/81/slide-02.jpg",
       "/images/history/timeline/81/slide-03.jpg"
-    ]
+    ],
+	"event":"АТЭ"
   }
 ]

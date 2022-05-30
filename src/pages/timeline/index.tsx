@@ -25,6 +25,7 @@ import historyList from "@/common/data/historyList.json";
 
 const Timeline = () => {
 
+  const [activeFilter, setActiveFilter] = useState(false)
   // Swiper store
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
@@ -45,10 +46,10 @@ const Timeline = () => {
     dots: false,
     arrows: false,
     autoplay: true,
-    speed: 3000,
+    speed: 5000,
     autoplaySpeed: 0,
     cssEase: "ease",
-    centerPadding: "200px"
+    // centerPadding: "200px"
   }
 
 
@@ -59,9 +60,17 @@ const Timeline = () => {
   const isEmptyItem = (historyList: HistoryObject[], i: number) => {
     return historyList[i]?.year === historyList[i - 1]?.year
   }
+
+  // const FilterArray = () => {
+  //     historyList.map((item) => {
+
+  //     }
+  // };
+
   return (
     <Layout title="История АТЭ">
       <Root>
+        
         <Swiper
           id='main_swiper_id'
           className='main_swiper_class'
@@ -97,7 +106,7 @@ const Timeline = () => {
               slidesOffsetBefore: 0,
               centeredSlides: true,
             },
-            1820: {
+            1620: {
               slidesPerView: 1.75,
               slidesOffsetBefore: 300,
             },
@@ -112,24 +121,28 @@ const Timeline = () => {
               key={item.id}
               data-hash={item.id}
             >
-              {({ isActive }) => (
+              {({ isActive, isNext }) => (
                 <>
                   {/* Slide - div с img тегом внутри */}
                   <Slide>
                     <Image
                       onClick={() => openModal(item.id)}
                       style={{
-                        width: isActive ? "55vw" : "458px",
-                        height: isActive ? "43vh" : "235px",
+                        width: isActive ? "55vw" : "23.8vw",
+                        height: isActive ? "43vh" : "21.7vh",
                         opacity: isActive ? 1 : 0.53,
+                        position: 'relative',
                       }}
                       src={`/images/history/timeline/${item.id}/preview.jpg`}
                       alt={item.preview.caption}
                     />
+                    {/* Иконка */}
+                    {isActive && <ImageIcon>{item.event === "АТЭ" ? <img src="/images/history/timeline/icon/sort-ate.png" alt="Sort by ATE" /> : <img src="/images/history/timeline/icon/sort-ao.png" alt="Sort by ATE" />}</ImageIcon>}
                     {/* Текст вверху фото */}
                     {isActive && (<TopCaption>{item.preview.caption}</TopCaption>)}
                     {/* Текст справа фото у неактивного элемента */}
-                    {isActive || (<EventPreview>{item.title}</EventPreview>)}
+                    {isNext && (<EventPreview>{item.title}</EventPreview>)}
+                    
                   </Slide>
                   <MiddleWrap>
                     {isActive && (<NumberOfEvents>{item.worldEvents}</NumberOfEvents>)}
@@ -148,6 +161,7 @@ const Timeline = () => {
                 </>
               )}
             </SwiperSlide>
+            
           ))}
           {/* Стрелки */}
           <ArrowPrev className="navigation_prev_arrow swiper-button-prev">
@@ -156,6 +170,11 @@ const Timeline = () => {
           <ArrowNext className="navigation_next_arrow swiper-button-next">
             <SlideArrow />
           </ArrowNext>
+          <Sort>
+            <SortItem active={activeFilter} onClick={() => {}}><img src="/images/history/timeline/icon/sort-ate.png" alt="Sort by ATE" /></SortItem>
+            <SortItem active={activeFilter}><img src="/images/history/timeline/icon/sort-ao.png" alt="Sort by AO" /></SortItem>
+            <SortItem active={activeFilter}><img src="/images/history/timeline/icon/sort-all.png" alt="Show ALL" /></SortItem>
+          </Sort>
           {/* Hr */}
           <Hr></Hr>
         </Swiper>
@@ -275,13 +294,13 @@ const Timeline = () => {
                   <ItemEvent>{`${historyList[currentSlide].numberOfEmployees} человек`}</ItemEvent>
                 </ItemFlex>
               </Item>
-              <Item>
+              {/* <Item>
                 <ItemText>Международный год ООН</ItemText>
                 <ItemFlex>
                   <ItemImage src="/images/history/card/card-3.png" />
                   <ItemEvent>{historyList[currentSlide].unEvents}</ItemEvent>
                 </ItemFlex>
-              </Item>
+              </Item> */}
             </ItemsWrapper>
           </Items>
           {/* карусель */}
@@ -293,6 +312,8 @@ const Timeline = () => {
                     alt="slider_image"
                     width="732px"
                     height="488px"
+                    // width="100%"
+                    // height="100%"
                     src={item}
                     style={{cursor: "default"}}
                     // onClick={() => {
@@ -333,10 +354,63 @@ const Timeline = () => {
 
 export default Timeline;
 
+const Sort = styled('div')`
+  position: absolute;
+  z-index: 10;
+  top: 14vh;
+  left: 2.5vw;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* height: 300px; */
+  /* width: 100px; */
+`
+
+const SortItem = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  /* height: 77px; */
+  /* width: 77px; */
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 50%;
+  background-color: rgba(113, 181, 244, 0.55);
+  margin-bottom: 10px;
+  cursor: pointer;
+    &:hover {
+      background-color: rgba(78, 164, 217, 0.87);;
+    }
+    &:active {
+      background-color: #3B99D2;
+    }
+  ${({ active }) => active && css`
+      background-color: #3B99D2;
+  `}
+`
+
+const ImageIcon = styled('div')`
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  /* height: 77px; */
+  /* width: 77px; */
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 50%;
+  background-color: rgba(113, 181, 244, 0.55);
+`
+
+
 // Animation
-// Animation не удалять
 const slide_in_bottom = keyframes`
-  0% { -webkit-transform: translateY(1000px); transform: translateY(1000px); opacity: 0;}
+  0% { -webkit-transform: translateY(300px); transform: translateY(300px); opacity: 0;}
   100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1;}
 `
 
@@ -361,7 +435,7 @@ const PopupWindow_ = styled(PopupWindow)`
 // Photo
 
 const ImgWrapper = styled('div')`
-  height: 769px;
+  height: 71.2vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -477,13 +551,13 @@ const Items = styled(Container)`
 const ItemsWrapper = styled('div')`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding-left: 285px;
   animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.9s both;
 `
 const Item = styled('div')`
   display: flex;
-  width: 30%;
+  width: 40%;
   flex-direction: column;
   align-self: flex-start;
   position: relative;
@@ -553,13 +627,17 @@ const ItemEvent = styled('div')`
 
 // Карусель 
 const CarouselWrapper = styled('div')`
-  margin-top: 62px;
-  margin-bottom: 64px;
-  padding-top: 21px;
-  padding-bottom: 21px;
+  margin: 62px auto;
+  /* margin-bottom: 64px; */
+  /* padding-top: 21px; */
+  /* padding-bottom: 21px; */
 `
 const SlideWrapper = styled('div')`
-  padding-right: 167px;
+  padding-right: 5vw;
+  /* margin-right: 5vw; */
+  /* margin-right: 500px; */
+  /* width: 43.125vw; */
+  /* height: 45.185vh; */
 `
 const Image_Inside = styled('img')`
 `
@@ -665,7 +743,7 @@ const EventPreview = styled('div')`
 const MiddleWrap = styled('div')`
   display: flex;
   justify-content: flex-end;
-  width: 1049px;
+  width: 55vw;
   min-height: 70px;
   margin-top: 22px;
   @media (max-height: 1000px) {
@@ -723,14 +801,14 @@ const NumberOfEmployees = styled("div")`
 // Обертка для Svg
 const DotsWrap = styled('div')`
   position: relative;
-  top: 26px;
+  top: 2.2vh;
   left: 120px;
 `
 // Обертка 1983 + Создано + Подробнее
 const EventWrap = styled('div')`
   display: flex;
   justify-content: flex-start;
-  width: 1049px;
+  width: 70vw;
   height: 115px;
   margin-top: 40px;
   @media (max-height: 1000px) {
@@ -813,7 +891,7 @@ const SlideIcon = styled('img')`
 const ArrowPrev = styled("div")`
     position: absolute;
     top: 22px;
-    left: 50px;
+    left: 2.5vw;
     width: 134px;
     height: 94px;
     &::after {
@@ -833,7 +911,7 @@ const ArrowPrev = styled("div")`
 const ArrowNext = styled("div")`
     position: absolute;
     top: 22px;
-    right: 50px;
+    right: 2.5vw;
     width: 134px;
     height: 94px;
     &::after {

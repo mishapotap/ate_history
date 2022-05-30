@@ -20,13 +20,11 @@ const Home = () => {
           <Title>История «Атомтехэнерго»</Title>
           <EventsBtn onClick={goToTimeline}>Все события</EventsBtn>
         </Left>
-        <Middle>
-          <Hexoid onClick={goToTimeline}>
-            <Main src="/images/history/main.png" />
-            <Dots src="/images/history/dots.png" />
-            <Years src="/images/history/years.png" />
-          </Hexoid>
-        </Middle>
+        <Hexoid onClick={goToTimeline}>
+          <Main src="/images/history/main.png" />
+          <Dots src="/images/history/dots.png" />
+          <Years src="/images/history/years.png" />
+        </Hexoid>
         <Right>
           <MoreBtn onClick={goToTimeline}>Подробнее</MoreBtn>
         </Right>
@@ -63,18 +61,9 @@ const scale_up_years = keyframes`
 
 const Wrap = styled('div')`
   display: flex;
+  height: 100%;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 90px;
-  @media (max-width: 1700px) {
-    padding-top: 50px;
-  }
-  @media (max-width: 1600px) {
-    padding-top: 35px;
-  }
-  @media (max-width: 1500px) {
-    padding-top: 10px;
-  }
 `
 const Left = styled('div')`
   width: 360px;
@@ -97,11 +86,7 @@ const Left = styled('div')`
     }
   } */
 `
-const Middle = styled('div')`
-  display: flex;
-  width: 814px;
-  justify-content: center;
-`
+
 const Right = styled('div')`
   display: flex;
   width: 200px;
@@ -118,10 +103,6 @@ const Title = styled('div')`
   line-height: 53px;
   color: #263973;
   letter-spacing: 0.1em;
-  padding-left: 15px;
-  @media (max-width: 1650px) {
-    font-size: 34px;
-  }
 `
 const EventsBtn = styled('div')`
     position: relative;
@@ -162,9 +143,8 @@ const EventsBtn = styled('div')`
 // Middle Hexoid
 
 const Hexoid = styled("div")`
-    width: 814px;
-    height: 716px;
-    /* 620 - 630*/
+    width: 42.4vw;
+    height: 66.3vh;
     position: relative;
     cursor: pointer;
 `;
@@ -172,18 +152,24 @@ const Main = styled("img")`
     position: absolute;
     top: 0;
     left: 0;
+    width: 42.4vw;
+    height: 66.3vh;
     animation: ${opacity_main} 1s linear;
 `;
 const Dots = styled("img")`
     position: absolute;
-    top: 41px;
-    left: 131px;
+    top: 3.8vh;
+    left: 6.82vw;
+    width: 31.25vw;
+    height: 58.7vh;
     animation: ${scale_up_dots} 1.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.3s both;
 `;
 const Years = styled("img")`
     position: absolute;
-    top: 53px;
-    left: 98px;
+    top: 4.9vh;
+    left: 5.1vw;
+    width: 30vw;
+    height: 56.66vh;
     animation: ${scale_up_years} 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1.3s both;
 `;
 
