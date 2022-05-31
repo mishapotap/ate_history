@@ -103,6 +103,9 @@ const Title = styled('div')`
   line-height: 53px;
   color: #263973;
   letter-spacing: 0.1em;
+  @media (max-height: 900px) {
+    font-size: 32px;
+  }
 `
 const EventsBtn = styled('div')`
     position: relative;

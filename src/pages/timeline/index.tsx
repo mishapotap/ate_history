@@ -83,7 +83,6 @@ const Timeline = () => {
         
         <Swiper
           id='main_swiper_id'
-          className='main_swiper_class'
           modules={[Navigation, Controller, HashNavigation]}
           onSwiper={setFirstSwiper}
           controller={{ control: secondSwiper }}
@@ -120,7 +119,7 @@ const Timeline = () => {
               slidesPerView: 1.75,
               slidesOffsetBefore: 300,
             },
-            1300: {
+            1200: {
               slidesPerView: 1,
               slidesOffsetBefore: 200,
             }
@@ -157,16 +156,19 @@ const Timeline = () => {
                     {isActive && (<NumberOfEvents>{item.worldEvents}</NumberOfEvents>)}
                     {isActive && (<NumberOfEmployees>{`${item.numberOfEmployees} человек`}</NumberOfEmployees>)}
                   </MiddleWrap>
-                  {/* Svg на серой полоске */}
-                  {isActive ? <DotsWrap><SliderEllipseActive /></DotsWrap> : <DotsWrap><SliderEllipse /></DotsWrap>}
                   <EventWrap>
                     {isActive && <EventYear>{item.year}</EventYear>}
-                    <div style={{flexDirection: 'column', display: 'flex', justifyContent: 'space-between'}}>
+                    <div style={{flexDirection: 'column', display: 'flex', width: "100%", justifyContent: 'space-between'}}>
                       {isActive && <EventTitle onClick={() => openModal(item.id)}>{item.title}</EventTitle>}
                       {isActive && <EventMoreInfo onClick={() => openModal(item.id)}>Подробнее</EventMoreInfo>}
                     </div>
                   </EventWrap>
+                  {/* Иконка */}
                   {isActive && <SlideIcon src={item.sliderIcon} alt="slider_icon" />}
+                  {/* Svg на серой полоске */}
+                  {isActive && <DotsWrap><SliderEllipseActive /></DotsWrap>}
+                  {isNext && <DotsWrap><SliderEllipse /></DotsWrap>}
+                  
                 </>
               )}
             </SwiperSlide>
@@ -202,7 +204,6 @@ const Timeline = () => {
         {/* Второй Swiper */}
         <Swiper
           id='second_swiper_id'
-          className='second_swiper_class'
           modules={[Navigation, Controller]}
           onSwiper={setSecondSwiper}
           controller={{ control: firstSwiper }}
@@ -232,9 +233,6 @@ const Timeline = () => {
                       fontSize: isActive
                         ? "18px"
                         : "11px",
-                      lineHeight: isActive
-                        ? "21px"
-                        : "13px",
                       color: isActive ? "#000000" : "#707070",
                     }}>
                       {/* Проверка даты */}
@@ -376,13 +374,10 @@ export default Timeline;
 const Sort = styled('div')`
   position: absolute;
   z-index: 10;
-  top: 14vh;
+  top: 15vh;
   left: 2.5vw;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
-  /* height: 300px; */
-  /* width: 100px; */
 `
 
 const SortItem = styled('div')`
@@ -390,10 +385,10 @@ const SortItem = styled('div')`
   justify-content: center;
   align-items: center;
   align-self: center;
-  /* height: 77px; */
-  /* width: 77px; */
   width: 5vw;
   height: 5vw;
+  max-width: 77px;
+  max-height: 77px;
   border-radius: 50%;
   background-color: rgba(113, 181, 244, 0.55);
   margin-bottom: 10px;
@@ -422,6 +417,8 @@ const ImageIcon = styled('div')`
   /* width: 77px; */
   width: 5vw;
   height: 5vw;
+  max-width: 77px;
+  max-height: 77px;
   border-radius: 50%;
   background-color: rgba(113, 181, 244, 0.55);
 `
@@ -536,7 +533,7 @@ const Text = styled('div')`
 const FirstParagraph = styled(Container)`
 `
 const FirstWrapper = styled('div')`
-  padding-left: 285px;
+  padding-left: 14vw;
   animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
   p {
     font-weight: bold;
@@ -552,7 +549,7 @@ const FirstWrapper = styled('div')`
 const SecondParagraph = styled(Container)`
 `
 const SecondWrapper = styled('div')`
-  padding-left: 285px;
+  padding-left: 14vw;
   animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.2s both;
   p {
     font-weight: 300;
@@ -570,8 +567,8 @@ const Items = styled(Container)`
 const ItemsWrapper = styled('div')`
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-left: 285px;
+  justify-content: space-evenly;
+  padding-left: 14vw;
   animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.9s both;
 `
 const Item = styled('div')`
@@ -680,21 +677,13 @@ const CarouselContainer = styled(Container)`
 // 
 const Root = styled('div')`
   overflow-y: auto;
-  /* height: 100%; */
-  /* animation: ${slide_in_bottom} .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both; */
   #main_swiper_id {
-    margin-top: 60px;
-    @media (max-height: 1000px) {
-      margin-top: 30px;
-    }
+    padding-top: 4vh;
   }
   #second_swiper_id {
-    margin-left: 360px;
-    padding-top: 30px;
+    margin-left: 18vw;
+    padding-top: 2vh;
     padding-bottom: 10px;
-    @media (max-height: 1000px) {
-      padding-top: 0;
-    }
   }
 `
 
@@ -722,10 +711,11 @@ const Image = styled("img")`
 const TopCaption = styled('div')`
   display: block;
   width: 215px;
-  height: 32px;
+  /* height: 32px; */
   position: absolute;
   top: 0;
-  right: -320px;
+  /* right: -320px; */
+  right: calc((-215px - 4.5vw));
   /* text */
   font-weight: 700;
   font-size: 12px;
@@ -735,12 +725,17 @@ const TopCaption = styled('div')`
   &:before{
     content: "";
     display: block;
-    width: 64px;
+    /* width: 64px; */
+    width: 2.5vw;
     height: 1px;
     background-color: #000000;
     position: absolute;
     top: 0;
-    left: -85px;
+    /* left: -85px; */
+    left: -3.5vw;
+  }
+  @media (max-height: 900px) {
+    font-size: 10px;
   }
 `
 // Справа фото превью следующего события
@@ -757,18 +752,17 @@ const EventPreview = styled('div')`
   line-height: 23px;
   letter-spacing: 0.14em;
   color: #000000;
+  @media (max-height: 900px) {
+    font-size: 10px;
+  }
 `
 // Зарегистрировано + 384 человек
 const MiddleWrap = styled('div')`
   display: flex;
   justify-content: flex-end;
   width: 55vw;
-  min-height: 70px;
-  margin-top: 22px;
-  @media (max-height: 1000px) {
-  margin-top: 5px;
-  }
-  
+  min-height: 10vh;
+  padding-top: 1vh;
 `
 // Под фото событие
 const NumberOfEvents = styled("div")`
@@ -789,8 +783,11 @@ const NumberOfEvents = styled("div")`
       height: 12px;
       background: #FF8A4B;
       opacity: 0.4;
-      top: 0;
+      top: 5px;
       left: -24px;
+    }
+    @media (max-height: 900px) {
+      font-size: 10px;
     }
 `;
 // Под фото количество человек
@@ -813,37 +810,38 @@ const NumberOfEmployees = styled("div")`
       height: 12px;
       background: #38EBEB;
       opacity: 0.4;
-      top: 0;
+      top: 5px;
       left: -24px;
+    }
+    @media (max-height: 900px) {
+      font-size: 10px;
     }
 `;
 // Обертка для Svg
 const DotsWrap = styled('div')`
-  position: relative;
-  top: 2.2vh;
+  position: absolute;
+  bottom: 12vh;
   left: 120px;
 `
 // Обертка 1983 + Создано + Подробнее
 const EventWrap = styled('div')`
   display: flex;
-  justify-content: flex-start;
   width: 70vw;
-  height: 115px;
-  margin-top: 40px;
-  @media (max-height: 1000px) {
-    height: 100px;
-  }
+  min-height: 11vh;
+  padding-top: 2vh;
 `
 // Под фото год
 const EventYear = styled("div")`
+    align-self: center;
+    margin-right: 5vw;
+    /* text */
     font-weight: 700;
     font-size: 92px;
     text-align: center;
     letter-spacing: 0.04em;
     color: #263973;
-    margin-right: 90px;
-    @media (max-height: 1000px) {
-      font-size: 80px;
+    @media (max-height: 900px) {
+      font-size: 55px;
     }
 `;
 // Под фото название события
@@ -851,7 +849,7 @@ const EventTitle = styled("div")`
     /* text */
     font-weight: 700;
     font-size: 21px;
-    line-height: 27px;
+    /* line-height: 27px; */
     color: #000000;
     letter-spacing: 0.14em;
     cursor: pointer;
@@ -860,6 +858,9 @@ const EventTitle = styled("div")`
     }
     &:active {
       color: #263973;
+    }
+    @media (max-height: 900px) {
+      font-size: 16px;
     }
 `;
 // Кнопка Подробнее
@@ -903,15 +904,15 @@ const EventMoreInfo = styled('div')`
 // Иконка завода к слайду
 const SlideIcon = styled('img')`
     position: absolute;
-    bottom: 137px;
+    bottom: 12.6vh;
     left: -165px;
 `
 // Левая стрелка
 const ArrowPrev = styled("div")`
     position: absolute;
-    top: 22px;
+    top: 4vh;
     left: 2.5vw;
-    width: 134px;
+    width: 7vw;
     height: 94px;
     &::after {
       display: none;
@@ -929,9 +930,10 @@ const ArrowPrev = styled("div")`
 // Правая стрелка
 const ArrowNext = styled("div")`
     position: absolute;
-    top: 22px;
+    top: 4vh;
     right: 2.5vw;
-    width: 134px;
+    width: 7vw;
+    /* width: 134px; */
     height: 94px;
     &::after {
       display: none;
@@ -948,7 +950,8 @@ const Hr = styled('div')`
     position: absolute;
     width: 100%;
     height: 1px;
-    bottom: 138px;
+    bottom: 12.78vh;
+    /* bottom: 138px; */
     background-color: #878787;
 `
 
@@ -962,7 +965,8 @@ const MiniSlide = styled("div")`
     display: flex;
     position: relative;
     width: 78px;
-    height: 80px;
+    height: 7vh;
+    min-height: 70px;
     justify-content: center;
     cursor: pointer;
     :hover svg path {
@@ -978,9 +982,6 @@ const MiniSlide = styled("div")`
       fill  : #263973 ;
       stroke: #263973;
       }
-    }
-    @media (max-height: 1000px) {
-      height: 70px;
     }
 `;
 // Дата минислайд
@@ -999,7 +1000,7 @@ const MiniDate = styled('div')`
 // Левая стрелка мини слайд
 const ArrowPrevSmall = styled("div")`
     position: absolute;
-    top: 53px;
+    top: calc(2vh + 23px);
     left: 0px;
     width: 46px;
     height: 33px;
@@ -1015,15 +1016,12 @@ const ArrowPrevSmall = styled("div")`
     svg:active path {
     stroke: #1A588B;
     }
-    @media (max-height: 1000px) {
-    top: 23px;
-    }
 `;
 // Правая стрелка мини слайд
 const ArrowNextSmall = styled("div")`
     position: absolute;
-    top: 53px;
-    right: 50px;
+    top: calc(2vh + 23px);
+    right: 2.5vw;
     width: 46px;
     height: 33px;
     &::after {
@@ -1034,9 +1032,6 @@ const ArrowNextSmall = styled("div")`
     }
     svg:active path {
     stroke: #1A588B;
-    }
-    @media (max-height: 1000px) {
-    top: 23px;
     }
 `
 // Полоска мини слайд

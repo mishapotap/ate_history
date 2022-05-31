@@ -81,7 +81,6 @@ const Content = styled('div')`
   position: relative;
   // z-index: 5;
   height: 100%;
-  
   ${({ fullsize }) => !fullsize && css`
     padding-top: 88px;
   `}
@@ -95,7 +94,9 @@ const Header = styled('header')`
   left: 0;
   color: #000000;
   border-bottom: 1px solid #DBDBDB;
-  height: 88px;
+  height: 8vh;
+  max-height: 88px;
+  min-height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,14 +120,16 @@ const PageTitle = styled('div')`
   line-height: 21px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  margin-left: 178px;
+  /* margin-left: 178px; */
 `
 
 const MenuButton = styled('button')`
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 38px 105px 37px 38px;
+  /* padding: 38px 105px 37px 38px; */
+  padding-right: 100px;
+  padding-left: 40px;
   background-color: #4EA4D9;
   font-weight: bold;
   font-size: 11px;
