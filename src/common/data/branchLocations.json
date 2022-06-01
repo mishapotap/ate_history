@@ -1,0 +1,184 @@
+[
+  {
+    "id": 0,
+    "title": "Карта мира",
+    "parentId": null,
+    "coordinates": {
+      "x": 0,
+      "y": 0
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 1,
+    "title": "Российская Федерация",
+    "parentId": 0,
+    "coordinates": {
+      "x": 120,
+      "y": 210
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Беларусь",
+    "contentId": 5,
+    "parentId": 0,
+    "coordinates": {
+      "x": -422,
+      "y": 173
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Болгария",
+    "parentId": 0,
+    "coordinates": {
+      "x": -470,
+      "y": 85
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "bottom"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Турция",
+    "contentId": 8,
+    "parentId": 0,
+    "coordinates": {
+      "x": -380,
+      "y": 60
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "bottom",
+        "inside": true
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Бангладеш",
+    "contentId": 7,
+    "parentId": 0,
+    "coordinates": {
+      "x": 340,
+      "y": -90
+    },
+    "label": {
+      "position": {
+        "horizontal": "left",
+        "vertical": "bottom",
+        "inside": true
+      }
+    }
+  },
+  {
+    "id": 6,
+    "title": "\"ЦЕНТРАТОМТЕХЭНЕРГО\"",
+    "supTitle": "г. Москва",
+    "contentId": 0,
+    "parentId": 1,
+    "coordinates": {
+      "x": -643,
+      "y": 145
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "\"БАЛАКОВОАТОМТЕХЭНЕРГО\"",
+    "supTitle": "г. Балаково",
+    "contentId": 3,
+    "parentId": 1,
+    "coordinates": {
+      "x": -636,
+      "y": 31
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "bottom"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "\"РОСТОВАТОМТЕХЭНЕРГО\"",
+    "supTitle": "г. Волгодонск",
+    "contentId": 4,
+    "parentId": 1,
+    "coordinates": {
+      "x": -771,
+      "y": 17
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "bottom",
+        "inside": true
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": " \"КАЛИНИНАТОМТЕХЭНЕРГО\"",
+    "supTitle": "г. Удомля",
+    "contentId": 2,
+    "parentId": 1,
+    "coordinates": {
+      "x": -568,
+      "y": 171
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "bottom"
+      }
+    }
+  },
+  {
+    "id": 10,
+    "title": "\"НОВОВОРОНЕЖАТОМТЕХЭНЕРГО\"",
+    "supTitle": "г. Нововоронеж",
+    "contentId": 6,
+    "parentId": 1,
+    "coordinates": {
+      "x": -726,
+      "y": 115
+    },
+    "label": {
+      "position": {
+        "horizontal": "right",
+        "vertical": "top",
+        "inside": true
+      }
+    }
+  }
+]

@@ -6,9 +6,30 @@ import styled from "styled-components";
 import { Cross } from "@/components/svg"
 import { useRouter } from 'next/router';
 
+const CloseButton = ({ href, ...props }) => {
+  const router = useRouter();
+  if (href) {
+    return (
+      <RootWithHref href={href}>
+        <Button onClick={() => router.back()} {...props}>
+          <Icon/>
+        </Button>
+      </RootWithHref>
+    )
+  }
+  
+  return (
+    <Button {...props}>
+      <Icon/>
+    </Button>
+  )
+}
+
+export default CloseButton
+
 const RootWithHref = styled(Link)``
 
-const Button = styled.a`
+const Button = styled('a')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,26 +63,3 @@ const Icon = styled(Cross)`
   width: 1em;
   height: 1em;
 `
-
-const CloseButton = ({ href, ...props }) => {
-  const router = useRouter();
-  if (href) {
-    return (
-      <RootWithHref href={href}>
-        <Button onClick={() => router.back()} {...props}>
-          <Icon/>
-        </Button>
-      </RootWithHref>
-    )
-  }
-  
-  return (
-    <Button {...props}>
-      <Icon/>
-    </Button>
-  )
-}
-
-export default CloseButton
-
-

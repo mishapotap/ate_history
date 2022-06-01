@@ -1,7 +1,17 @@
 import React from 'react'
 import styled from "styled-components"
 
-const Root = styled.button`
+const Button = ({ children, ...props }) => {
+  return (
+    <Root {...props}>
+      {children}
+    </Root>
+  )
+}
+
+export default Button
+
+const Root = styled('button')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,15 +23,3 @@ const Root = styled.button`
   font-size: 12px;
   cursor: pointer;
 `
-
-const Button = ({ children, ...props }) => {
-  return (
-    <Root {...props}>
-      {children}
-    </Root>
-  )
-}
-
-export default Button
-
-

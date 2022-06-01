@@ -87,8 +87,8 @@ const breakpoints = {
   // Medium devices (tablets, 648px and up)
   tablet: 648,
   
-  // Large devices (desktops, 1200px and up)
-  desktop: 1200,
+  // Large devices (desktops, 1280px and up)
+  desktop: 1280,
   
   // Extra large devices (large desktops, 1440px and up)
   largeDesktop: 1670,

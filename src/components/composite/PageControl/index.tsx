@@ -9,14 +9,6 @@ import { useAppContext } from "@/components/context/App"
 import { Control } from "@/components/ui"
 import { Question as IconInfo, Volume as IconVolume } from "@/components/svg"
 
-const Root = styled.div`
-  display: flex;
-  button + button {
-    margin-left: -1px;
-  }
-`
-
-
 const PageControl = () => {
   const ref = useRef()
   const appContext = useAppContext()
@@ -49,3 +41,10 @@ const PageControl = () => {
 }
 
 export default PageControl
+
+const Root = styled('div')`
+  display: flex;
+  button + button {
+    margin-left: -1px;
+  }
+`
