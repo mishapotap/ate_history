@@ -22,6 +22,679 @@ import { HistoryObject } from "@/components/interfaces/history.interface";
 // Data
 import historyList from "@/common/data/historyList.json";
 
+// STYLES
+
+
+// Animation
+const slide_in_bottom = keyframes`
+  0% { -webkit-transform: translateY(300px); transform: translateY(300px); opacity: 0;}
+  100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1;}
+`
+
+// 
+const Root = styled.div`
+  overflow-y: auto;
+  #main_swiper_id {
+    padding-top: 4vh;
+  }
+  #second_swiper_id {
+    margin-left: 18vw;
+    padding-top: 2vh;
+    padding-bottom: 10px;
+  }
+`
+
+// Первый SWIPER
+
+// Обертка слайда
+const Slide = styled.div`
+    display: flex;
+    position: relative;
+    width: 55vw;
+    height: 43vh;
+`;
+// Обертка img
+const Image = styled.img`
+  transition: all 1s ease;
+  align-self: flex-end;
+  cursor: pointer;
+  &:hover { 
+    transform: scale(1.025);
+  }
+`;
+// Надпись верх фото
+const TopCaption = styled.div`
+  display: block;
+  width: 215px;
+  /* height: 32px; */
+  position: absolute;
+  top: 0;
+  /* right: -320px; */
+  right: calc((-215px - 4.5vw));
+  /* text */
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 19px;
+  letter-spacing: 0.14em;
+  color: #000000;
+  &:before{
+    content: "";
+    display: block;
+    /* width: 64px; */
+    width: 2.5vw;
+    height: 1px;
+    background-color: #000000;
+    position: absolute;
+    top: 0;
+    /* left: -85px; */
+    left: -3.5vw;
+  }
+  @media (max-height: 900px) {
+    font-size: 10px;
+  }
+`
+// Справа фото превью следующего события
+const EventPreview = styled.div`
+  display: block;
+  width: 330px;
+  height: 19px;
+  position: absolute;
+  top: 13vh;
+  left: 5px;
+  /* text */
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 23px;
+  letter-spacing: 0.14em;
+  color: #000000;
+  @media (max-height: 900px) {
+    font-size: 10px;
+  }
+`
+// Зарегистрировано + 384 человек
+const MiddleWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 55vw;
+  min-height: 10vh;
+  padding-top: 1vh;
+`
+// Под фото событие
+const NumberOfEvents = styled.div`
+    display: inline-block;
+    max-width: 380px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: 0.12em;
+    color: #000000;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 12px;
+      background: #FF8A4B;
+      opacity: 0.4;
+      top: 5px;
+      left: -24px;
+    }
+    @media (max-height: 900px) {
+      font-size: 10px;
+    }
+`;
+// Под фото количество человек
+const NumberOfEmployees = styled.div`
+    display: inline-block;
+    max-width: 100px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: 0.12em;
+    color: #000000;
+    margin-left: 40px;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 12px;
+      background: #38EBEB;
+      opacity: 0.4;
+      top: 5px;
+      left: -24px;
+    }
+    @media (max-height: 900px) {
+      font-size: 10px;
+    }
+`;
+// Обертка для Svg
+const DotsWrap = styled.div`
+  position: absolute;
+  bottom: 12vh;
+  left: 5vw;
+`
+// Обертка 1983 + Создано + Подробнее
+const EventWrap = styled.div`
+  display: flex;
+  width: 70vw;
+  min-height: 11vh;
+  padding-top: 2vh;
+`
+// Под фото год
+const EventYear = styled.div`
+    align-self: center;
+    margin-right: 5vw;
+    /* text */
+    font-weight: 700;
+    font-size: 92px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #263973;
+    @media (max-height: 900px) {
+      font-size: 55px;
+    }
+`;
+// Под фото название события
+const EventTitle = styled.div`
+    /* text */
+    font-weight: 700;
+    font-size: 21px;
+    /* line-height: 27px; */
+    color: #000000;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    &:hover {
+      color: #1A588B;
+    }
+    &:active {
+      color: #263973;
+    }
+    @media (max-height: 900px) {
+      font-size: 16px;
+    }
+`;
+// Кнопка Подробнее
+const EventMoreInfo = styled.div`
+    position: relative;
+    margin-left: 130px;
+    display: block;
+    width: 203px;
+    height: 19px;
+    cursor: pointer;
+    /* text */
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 19px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000000;
+    &:hover {
+        color: #1A588B;
+        &:before {
+            background-color: #1A588B;
+        }
+    }
+    &:active {
+        color: #263973;
+        &:before {
+            background-color: #263973;
+        }
+    }
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 120px;
+        height: 1px;
+        background-color: #000000;
+        bottom: 5px;
+        left: -130px;
+    }
+`
+// Иконка завода к слайду
+const SlideIcon = styled.img`
+    position: absolute;
+    bottom: 12.6vh;
+    left: -165px;
+`
+// Левая стрелка
+const ArrowPrev = styled.div`
+    position: absolute;
+    top: 4vh;
+    left: 2.5vw;
+    width: 7vw;
+    height: 94px;
+    &::after {
+      display: none;
+    }
+    svg {
+      transform: rotate(180deg);
+    }
+    svg:hover path {
+    stroke: #2D74AD;
+    }
+    svg:active path {
+    stroke: #1A588B;
+    }
+`;
+// Правая стрелка
+const ArrowNext = styled.div`
+    position: absolute;
+    top: 4vh;
+    right: 2.5vw;
+    width: 7vw;
+    /* width: 134px; */
+    height: 94px;
+    &::after {
+      display: none;
+    }
+    svg:hover path {
+    stroke: #2D74AD;
+    }
+    svg:active path {
+    stroke: #1A588B;
+    }
+`
+// Полоска
+const Hr = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 12.78vh;
+    /* bottom: 138px; */
+    background-color: #878787;
+`
+
+
+
+// Второй SWIPER
+
+
+// Обертка минислайда
+const MiniSlide = styled.div`
+    display: flex;
+    position: relative;
+    width: 78px;
+    height: 7vh;
+    min-height: 70px;
+    justify-content: center;
+    cursor: pointer;
+    :hover svg path {
+      fill  : #263973 ;
+      stroke: #263973;
+    } 
+    svg {
+      position: absolute;
+      bottom: -5px;
+      z-index: 15;
+      cursor: pointer;
+      &:hover path {
+      fill  : #263973 ;
+      stroke: #263973;
+      }
+    }
+`;
+// Дата минислайд
+const MiniDate = styled.div`
+  align-self: flex-end;
+  padding-bottom: 12px;
+  /* text */
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #707070;
+  cursor: pointer;
+`
+// Левая стрелка мини слайд
+const ArrowPrevSmall = styled.div`
+    position: absolute;
+    top: calc(2vh + 23px);
+    left: 0px;
+    width: 46px;
+    height: 33px;
+    &::after {
+      display: none;
+    }
+    svg {
+      transform: rotate(180deg);
+    }
+    svg:hover path {
+    stroke: #2D74AD;
+    }
+    svg:active path {
+    stroke: #1A588B;
+    }
+`;
+// Правая стрелка мини слайд
+const ArrowNextSmall = styled.div`
+    position: absolute;
+    top: calc(2vh + 23px);
+    right: 2.5vw;
+    width: 46px;
+    height: 33px;
+    &::after {
+      display: none;
+    }
+    svg:hover path {
+    stroke: #2D74AD;
+    }
+    svg:active path {
+    stroke: #1A588B;
+    }
+`
+// Полоска мини слайд
+const MiniHr = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 10px;
+    background-color: #C1C1C1;
+`
+
+// POPUP
+const PopupWindow_ = styled(PopupWindow)`
+  position: absolute;
+  padding: 0;
+  overflow-y: auto;
+  /* top: -88px; */
+  /* background-color: #ffffff; */
+  /* z-index: 1000; */
+  display: none;
+  transform: translateY(-200vh);
+  /* transition: transform 1s ease-in-out .5s; */
+  
+  ${({ active }) => active && css`
+    display: block;
+    transform: translateY(0vh);
+  `}
+`
+
+// Photo
+
+const ImgWrapper = styled.div`
+  height: 71.2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ffffff;
+  position: relative;
+  margin-bottom: 67px;
+  
+  ${(p) => p.bg && css`
+    background: url('${p.bg}') no-repeat center center / cover;
+  `}
+  
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 16.67%, rgba(0, 0, 0, 0.78) 100%);
+  }
+`
+const ImgContainer = styled(Container)`
+  position: relative;
+  z-index: 10;
+`
+const ImgTitle = styled('p')`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 125%;
+  letter-spacing: 0.1em;
+  margin-bottom: 37px;
+`
+const Grid = styled.div`
+  display: flex;
+  padding-bottom: 62px;
+`
+const Col = styled.div`
+  min-width: 285px;
+  min-height: 88px;
+  position: relative;
+  padding: 18px 80px 0 79px;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: white;
+  }
+  &:first-of-type {
+    padding-left: 0;
+  }
+  &:last-of-type {
+    &:after {
+      display: none;
+    }
+  }
+`
+const Label = styled.div`
+  font-weight: bold;
+  font-size: 9px;
+  line-height: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+`
+const Text = styled.div`
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.14em;
+`
+
+
+// Параграф 1
+const FirstParagraph = styled(Container)`
+`
+const FirstWrapper = styled.div`
+  padding-left: 14vw;
+  animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+  p {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    margin: 0 0 24px;
+  }
+`
+
+
+// Параграф 2
+const SecondParagraph = styled(Container)`
+`
+const SecondWrapper = styled.div`
+  padding-left: 14vw;
+  animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.2s both;
+  p {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 2;
+    letter-spacing: 0.1em;
+    margin: 0 0 24px;
+  }
+`
+
+
+// События
+const Items = styled(Container)`
+`
+const ItemsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 14vw;
+  animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.9s both;
+`
+const Item = styled.div`
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  align-self: flex-start;
+  position: relative;
+  &:first-child:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 12px;
+      background: #FF8A4B;
+      opacity: 0.4;
+      top: 1px;
+      left: 0;
+    }
+    &:nth-child(2):before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 12px;
+      background: #38EBEB;
+      opacity: 0.4;
+      top: 1px;
+      left: 0;
+    }
+    &:nth-child(3):before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 41px;
+      height: 12px;
+      background: rgba(126, 108, 238, 0.63);
+      opacity: 0.4;
+      top: 1px;
+      left: 0;
+    }
+`
+const ItemText = styled.div`
+    height: 40px;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 34px;
+`
+const ItemFlex = styled.div`
+    display: flex;
+
+`
+const ItemImage = styled.img`
+  display: block;
+  width: 70px;
+  height: 70px;
+`
+const ItemEvent = styled.div`
+  margin-left: 45px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  letter-spacing: 0.12em;
+  color: #000000;
+  @media (max-width: 1600px) {
+  margin-left: 20px;
+  }
+`
+
+// Карусель 
+const CarouselWrapper = styled.div`
+  margin: 62px auto;
+  /* margin-bottom: 64px; */
+  /* padding-top: 21px; */
+  /* padding-bottom: 21px; */
+`
+const SlideWrapper = styled.div`
+  padding-right: 5vw;
+  /* margin-right: 5vw; */
+  /* margin-right: 500px; */
+  /* width: 43.125vw; */
+  /* height: 45.185vh; */
+`
+const Image_Inside = styled.img`
+`
+const PopupWindow_Inside = styled(PopupWindow)`
+  transform: translateY(-200vh);
+  /* transition: transform 1s ease-in-out .5s; */
+  /* z-index: 900; */
+  
+  ${({ active }) => active && css`
+    transform: translateY(0vh);
+  `}
+`
+const CarouselContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+`
+
+// Сортировка
+const Sort = styled.div`
+  position: absolute;
+  z-index: 10;
+  top: 15vh;
+  left: 2.5vw;
+  display: flex;
+  flex-direction: column;
+`
+
+const SortItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 5vw;
+  height: 5vw;
+  max-width: 77px;
+  max-height: 77px;
+  border-radius: 50%;
+  background-color: rgba(113, 181, 244, 0.55);
+  margin-bottom: 10px;
+  cursor: pointer;
+    &:hover {
+      background-color: rgba(78, 164, 217, 0.87);;
+    }
+    &:active {
+      background-color: #3B99D2;
+    }
+  ${({ active }) => active && css`
+      background-color: #3B99D2;
+  `}
+`
+
+const ImageIcon = styled.div`
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  /* height: 77px; */
+  /* width: 77px; */
+  width: 5vw;
+  height: 5vw;
+  max-width: 77px;
+  max-height: 77px;
+  border-radius: 50%;
+  background-color: rgba(113, 181, 244, 0.55);
+`
+
+
+
+
 
 const Timeline = () => {
 
@@ -110,16 +783,16 @@ const Timeline = () => {
           // centeredSlides={true}
           // slideToClickedSlide={true}
           breakpoints={{
-            2500: {
-              slidesPerView: 1.75,
-              slidesOffsetBefore: 0,
-              centeredSlides: true,
-            },
+            // 2500: {
+              // slidesPerView: 1.75,
+              // slidesOffsetBefore: 300,
+              // centeredSlides: true,
+            // },
             1620: {
               slidesPerView: 1.75,
               slidesOffsetBefore: 300,
             },
-            1200: {
+            800: {
               slidesPerView: 1,
               slidesOffsetBefore: 200,
             }
@@ -200,7 +873,6 @@ const Timeline = () => {
           <Hr></Hr>
         </Swiper>
 
-
         {/* Второй Swiper */}
         <Swiper
           id='second_swiper_id'
@@ -259,9 +931,8 @@ const Timeline = () => {
           {/* Hr */}
           <MiniHr></MiniHr>
         </Swiper>
-
         
-        {/* 2 PopUp */}
+        {/* 1 PopUp */}
         <PopupWindow_
           active={popupVisibility}
           onCloseHandler={() => {
@@ -370,675 +1041,3 @@ const Timeline = () => {
 };
 
 export default Timeline;
-
-const Sort = styled('div')`
-  position: absolute;
-  z-index: 10;
-  top: 15vh;
-  left: 2.5vw;
-  display: flex;
-  flex-direction: column;
-`
-
-const SortItem = styled('div')`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  width: 5vw;
-  height: 5vw;
-  max-width: 77px;
-  max-height: 77px;
-  border-radius: 50%;
-  background-color: rgba(113, 181, 244, 0.55);
-  margin-bottom: 10px;
-  cursor: pointer;
-    &:hover {
-      background-color: rgba(78, 164, 217, 0.87);;
-    }
-    &:active {
-      background-color: #3B99D2;
-    }
-  ${({ active }) => active && css`
-      background-color: #3B99D2;
-  `}
-`
-
-const ImageIcon = styled('div')`
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  /* height: 77px; */
-  /* width: 77px; */
-  width: 5vw;
-  height: 5vw;
-  max-width: 77px;
-  max-height: 77px;
-  border-radius: 50%;
-  background-color: rgba(113, 181, 244, 0.55);
-`
-
-
-// Animation
-const slide_in_bottom = keyframes`
-  0% { -webkit-transform: translateY(300px); transform: translateY(300px); opacity: 0;}
-  100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1;}
-`
-
-// POPUP
-const PopupWindow_ = styled(PopupWindow)`
-  position: absolute;
-  padding: 0;
-  overflow-y: auto;
-  /* top: -88px; */
-  /* background-color: #ffffff; */
-  /* z-index: 1000; */
-  display: none;
-  transform: translateY(-200vh);
-  /* transition: transform 1s ease-in-out .5s; */
-  
-  ${({ active }) => active && css`
-    display: block;
-    transform: translateY(0vh);
-  `}
-`
-
-// Photo
-
-const ImgWrapper = styled('div')`
-  height: 71.2vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  color: #ffffff;
-  position: relative;
-  margin-bottom: 67px;
-  
-  ${(p) => p.bg && css`
-    background: url('${p.bg}') no-repeat center center / cover;
-  `}
-  
-  &:before {
-    content: '';
-    position: absolute;
-    z-index: 5;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 16.67%, rgba(0, 0, 0, 0.78) 100%);
-  }
-`
-const ImgContainer = styled(Container)`
-  position: relative;
-  z-index: 10;
-`
-const ImgTitle = styled('p')`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 40px;
-  line-height: 125%;
-  letter-spacing: 0.1em;
-  margin-bottom: 37px;
-`
-const Grid = styled('div')`
-  display: flex;
-  padding-bottom: 62px;
-`
-const Col = styled('div')`
-  min-width: 285px;
-  min-height: 88px;
-  position: relative;
-  padding: 18px 80px 0 79px;
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: white;
-  }
-  &:first-of-type {
-    padding-left: 0;
-  }
-  &:last-of-type {
-    &:after {
-      display: none;
-    }
-  }
-`
-const Label = styled('div')`
-  font-weight: bold;
-  font-size: 9px;
-  line-height: 11px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  margin-bottom: 7px;
-`
-const Text = styled('div')`
-  font-weight: 300;
-  font-size: 25px;
-  line-height: 29px;
-  letter-spacing: 0.14em;
-`
-
-
-// Параграф 1
-const FirstParagraph = styled(Container)`
-`
-const FirstWrapper = styled('div')`
-  padding-left: 14vw;
-  animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
-  p {
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 30px;
-    letter-spacing: 0.1em;
-    margin: 0 0 24px;
-  }
-`
-
-
-// Параграф 2
-const SecondParagraph = styled(Container)`
-`
-const SecondWrapper = styled('div')`
-  padding-left: 14vw;
-  animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.2s both;
-  p {
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 2;
-    letter-spacing: 0.1em;
-    margin: 0 0 24px;
-  }
-`
-
-
-// События
-const Items = styled(Container)`
-`
-const ItemsWrapper = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-left: 14vw;
-  animation: ${slide_in_bottom} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.9s both;
-`
-const Item = styled('div')`
-  display: flex;
-  width: 40%;
-  flex-direction: column;
-  align-self: flex-start;
-  position: relative;
-  &:first-child:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 41px;
-      height: 12px;
-      background: #FF8A4B;
-      opacity: 0.4;
-      top: 1px;
-      left: 0;
-    }
-    &:nth-child(2):before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 41px;
-      height: 12px;
-      background: #38EBEB;
-      opacity: 0.4;
-      top: 1px;
-      left: 0;
-    }
-    &:nth-child(3):before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 41px;
-      height: 12px;
-      background: rgba(126, 108, 238, 0.63);
-      opacity: 0.4;
-      top: 1px;
-      left: 0;
-    }
-`
-const ItemText = styled('div')`
-    height: 40px;
-    font-weight: 700;
-    font-size: 11px;
-    line-height: 18px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    margin-bottom: 34px;
-`
-const ItemFlex = styled('div')`
-    display: flex;
-
-`
-const ItemImage = styled('img')`
-  display: block;
-  width: 70px;
-  height: 70px;
-`
-const ItemEvent = styled('div')`
-  margin-left: 45px;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 19px;
-  letter-spacing: 0.12em;
-  color: #000000;
-  @media (max-width: 1600px) {
-  margin-left: 20px;
-  }
-`
-
-// Карусель 
-const CarouselWrapper = styled('div')`
-  margin: 62px auto;
-  /* margin-bottom: 64px; */
-  /* padding-top: 21px; */
-  /* padding-bottom: 21px; */
-`
-const SlideWrapper = styled('div')`
-  padding-right: 5vw;
-  /* margin-right: 5vw; */
-  /* margin-right: 500px; */
-  /* width: 43.125vw; */
-  /* height: 45.185vh; */
-`
-const Image_Inside = styled('img')`
-`
-const PopupWindow_Inside = styled(PopupWindow)`
-  transform: translateY(-200vh);
-  /* transition: transform 1s ease-in-out .5s; */
-  /* z-index: 900; */
-  
-  ${({ active }) => active && css`
-    transform: translateY(0vh);
-  `}
-`
-const CarouselContainer = styled(Container)`
-  display: flex;
-  justify-content: center;
-`
-
-
-
-
-// 
-const Root = styled('div')`
-  overflow-y: auto;
-  #main_swiper_id {
-    padding-top: 4vh;
-  }
-  #second_swiper_id {
-    margin-left: 18vw;
-    padding-top: 2vh;
-    padding-bottom: 10px;
-  }
-`
-
-
-// Первый SWIPER
-
-
-// Обертка слайда
-const Slide = styled("div")`
-    display: flex;
-    position: relative;
-    width: 55vw;
-    height: 43vh;
-`;
-// Обертка img
-const Image = styled("img")`
-  transition: all 1s ease;
-  align-self: flex-end;
-  cursor: pointer;
-  &:hover { 
-    transform: scale(1.025);
-  }
-`;
-// Надпись верх фото
-const TopCaption = styled('div')`
-  display: block;
-  width: 215px;
-  /* height: 32px; */
-  position: absolute;
-  top: 0;
-  /* right: -320px; */
-  right: calc((-215px - 4.5vw));
-  /* text */
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 19px;
-  letter-spacing: 0.14em;
-  color: #000000;
-  &:before{
-    content: "";
-    display: block;
-    /* width: 64px; */
-    width: 2.5vw;
-    height: 1px;
-    background-color: #000000;
-    position: absolute;
-    top: 0;
-    /* left: -85px; */
-    left: -3.5vw;
-  }
-  @media (max-height: 900px) {
-    font-size: 10px;
-  }
-`
-// Справа фото превью следующего события
-const EventPreview = styled('div')`
-  display: block;
-  width: 330px;
-  height: 19px;
-  position: absolute;
-  top: 13vh;
-  left: 5px;
-  /* text */
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 23px;
-  letter-spacing: 0.14em;
-  color: #000000;
-  @media (max-height: 900px) {
-    font-size: 10px;
-  }
-`
-// Зарегистрировано + 384 человек
-const MiddleWrap = styled('div')`
-  display: flex;
-  justify-content: flex-end;
-  width: 55vw;
-  min-height: 10vh;
-  padding-top: 1vh;
-`
-// Под фото событие
-const NumberOfEvents = styled("div")`
-    display: inline-block;
-    max-width: 380px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 19px;
-    letter-spacing: 0.12em;
-    color: #000000;
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 41px;
-      height: 12px;
-      background: #FF8A4B;
-      opacity: 0.4;
-      top: 5px;
-      left: -24px;
-    }
-    @media (max-height: 900px) {
-      font-size: 10px;
-    }
-`;
-// Под фото количество человек
-const NumberOfEmployees = styled("div")`
-    display: inline-block;
-    max-width: 100px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 19px;
-    letter-spacing: 0.12em;
-    color: #000000;
-    margin-left: 40px;
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 41px;
-      height: 12px;
-      background: #38EBEB;
-      opacity: 0.4;
-      top: 5px;
-      left: -24px;
-    }
-    @media (max-height: 900px) {
-      font-size: 10px;
-    }
-`;
-// Обертка для Svg
-const DotsWrap = styled('div')`
-  position: absolute;
-  bottom: 12vh;
-  left: 120px;
-`
-// Обертка 1983 + Создано + Подробнее
-const EventWrap = styled('div')`
-  display: flex;
-  width: 70vw;
-  min-height: 11vh;
-  padding-top: 2vh;
-`
-// Под фото год
-const EventYear = styled("div")`
-    align-self: center;
-    margin-right: 5vw;
-    /* text */
-    font-weight: 700;
-    font-size: 92px;
-    text-align: center;
-    letter-spacing: 0.04em;
-    color: #263973;
-    @media (max-height: 900px) {
-      font-size: 55px;
-    }
-`;
-// Под фото название события
-const EventTitle = styled("div")`
-    /* text */
-    font-weight: 700;
-    font-size: 21px;
-    /* line-height: 27px; */
-    color: #000000;
-    letter-spacing: 0.14em;
-    cursor: pointer;
-    &:hover {
-      color: #1A588B;
-    }
-    &:active {
-      color: #263973;
-    }
-    @media (max-height: 900px) {
-      font-size: 16px;
-    }
-`;
-// Кнопка Подробнее
-const EventMoreInfo = styled('div')`
-    position: relative;
-    margin-left: 130px;
-    display: block;
-    width: 203px;
-    height: 19px;
-    cursor: pointer;
-    /* text */
-    font-weight: 700;
-    font-size: 10px;
-    line-height: 19px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #000000;
-    &:hover {
-        color: #1A588B;
-        &:before {
-            background-color: #1A588B;
-        }
-    }
-    &:active {
-        color: #263973;
-        &:before {
-            background-color: #263973;
-        }
-    }
-    &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 120px;
-        height: 1px;
-        background-color: #000000;
-        bottom: 5px;
-        left: -130px;
-    }
-`
-// Иконка завода к слайду
-const SlideIcon = styled('img')`
-    position: absolute;
-    bottom: 12.6vh;
-    left: -165px;
-`
-// Левая стрелка
-const ArrowPrev = styled("div")`
-    position: absolute;
-    top: 4vh;
-    left: 2.5vw;
-    width: 7vw;
-    height: 94px;
-    &::after {
-      display: none;
-    }
-    svg {
-      transform: rotate(180deg);
-    }
-    svg:hover path {
-    stroke: #2D74AD;
-    }
-    svg:active path {
-    stroke: #1A588B;
-    }
-`;
-// Правая стрелка
-const ArrowNext = styled("div")`
-    position: absolute;
-    top: 4vh;
-    right: 2.5vw;
-    width: 7vw;
-    /* width: 134px; */
-    height: 94px;
-    &::after {
-      display: none;
-    }
-    svg:hover path {
-    stroke: #2D74AD;
-    }
-    svg:active path {
-    stroke: #1A588B;
-    }
-`
-// Полоска
-const Hr = styled('div')`
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 12.78vh;
-    /* bottom: 138px; */
-    background-color: #878787;
-`
-
-
-
-// Второй SWIPER
-
-
-// Обертка минислайда
-const MiniSlide = styled("div")`
-    display: flex;
-    position: relative;
-    width: 78px;
-    height: 7vh;
-    min-height: 70px;
-    justify-content: center;
-    cursor: pointer;
-    :hover svg path {
-      fill  : #263973 ;
-      stroke: #263973;
-    } 
-    svg {
-      position: absolute;
-      bottom: -5px;
-      z-index: 15;
-      cursor: pointer;
-      &:hover path {
-      fill  : #263973 ;
-      stroke: #263973;
-      }
-    }
-`;
-// Дата минислайд
-const MiniDate = styled('div')`
-  align-self: flex-end;
-  padding-bottom: 12px;
-  /* text */
-  font-weight: 700;
-  font-size: 11px;
-  line-height: 13px;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: #707070;
-  cursor: pointer;
-`
-// Левая стрелка мини слайд
-const ArrowPrevSmall = styled("div")`
-    position: absolute;
-    top: calc(2vh + 23px);
-    left: 0px;
-    width: 46px;
-    height: 33px;
-    &::after {
-      display: none;
-    }
-    svg {
-      transform: rotate(180deg);
-    }
-    svg:hover path {
-    stroke: #2D74AD;
-    }
-    svg:active path {
-    stroke: #1A588B;
-    }
-`;
-// Правая стрелка мини слайд
-const ArrowNextSmall = styled("div")`
-    position: absolute;
-    top: calc(2vh + 23px);
-    right: 2.5vw;
-    width: 46px;
-    height: 33px;
-    &::after {
-      display: none;
-    }
-    svg:hover path {
-    stroke: #2D74AD;
-    }
-    svg:active path {
-    stroke: #1A588B;
-    }
-`
-// Полоска мини слайд
-const MiniHr = styled('div')`
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 10px;
-    background-color: #C1C1C1;
-`

@@ -4,16 +4,6 @@ import styled from "styled-components"
 // Components
 import { Button } from "@/components/ui"
 
-const Control = ({ children, ...props }) => {
-  return (
-    <Root {...props}>
-      {children}
-    </Root>
-  )
-}
-
-export default Control
-// Кнопка сама
 const Root = styled(Button)`
   font-size: 26px;
   padding-right: 0;
@@ -34,3 +24,13 @@ const Root = styled(Button)`
     border-color: #1A588B;
   }
 `
+
+const Control = ({ children, ...props }) => {
+  return (
+    <Root {...props}>
+      {children}
+    </Root>
+  )
+}
+
+export default Control

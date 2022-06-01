@@ -3,36 +3,7 @@ import Layout from '@/components/layout/general';
 import styled, { keyframes } from "styled-components";
 import { useRouter } from 'next/router';
 
-
-const Home = () => {
-
-
-  const router = useRouter();
-
-
-  const goToTimeline = () => {
-    router.push("/timeline");
-  };
-  return (
-    <Layout title='История АО «Атомтехэнерго»'>
-      <Wrap>
-        <Left>
-          <Title>История «Атомтехэнерго»</Title>
-          <EventsBtn onClick={goToTimeline}>Все события</EventsBtn>
-        </Left>
-        <Hexoid onClick={goToTimeline}>
-          <Main src="/images/history/main.png" />
-          <Dots src="/images/history/dots.png" />
-          <Years src="/images/history/years.png" />
-        </Hexoid>
-        <Right>
-          <MoreBtn onClick={goToTimeline}>Подробнее</MoreBtn>
-        </Right>
-      </Wrap>
-    </Layout>
-  )
-}
-
+// STYLES
 // Animation
 const slide_in_left = keyframes`
   0% { -webkit-transform: translateX(-1000px); transform: translateX(-1000px); opacity: 0;}
@@ -59,35 +30,22 @@ const scale_up_years = keyframes`
 
 // WRAPPERS
 
-const Wrap = styled('div')`
+const Wrap = styled.div`
   display: flex;
   height: 100%;
   justify-content: space-evenly;
   align-items: center;
 `
-const Left = styled('div')`
+const Left = styled.div`
   width: 360px;
   display: flex;
   flex-direction: column;
   animation: ${slide_in_left} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
-  /* audio {
-    &::-webkit-media-controls-enclosure {
-    border-radius: 5px;
-    background-color: green;
-    }
-    &::-webkit-media-controls-timeline-container, ::-webkit-media-controls-timeline {
-      display: none;
-    }
-    &::-webkit-media-controls-current-time-display {
-      display: none;
-    }
-    &::-webkit-media-controls-play-button {
-      
-    }
-  } */
+  @media (max-height: 900px) {
+    width: 310px;
+  }
 `
-
-const Right = styled('div')`
+const Right = styled.div`
   display: flex;
   width: 200px;
   justify-content: center;
@@ -96,8 +54,7 @@ const Right = styled('div')`
 
 // INSIDE
 
-// Left
-const Title = styled('div')`
+const Title = styled.div`
   font-weight: 300;
   font-size: 38px;
   line-height: 53px;
@@ -107,7 +64,7 @@ const Title = styled('div')`
     font-size: 32px;
   }
 `
-const EventsBtn = styled('div')`
+const EventsBtn = styled.div`
     position: relative;
     margin-top: 40px;
     align-self: flex-end;
@@ -142,16 +99,15 @@ const EventsBtn = styled('div')`
     }
 `
 
+// MIDDLE
 
-// Middle Hexoid
-
-const Hexoid = styled("div")`
+const Hexoid = styled.div`
     width: 42.4vw;
     height: 66.3vh;
     position: relative;
     cursor: pointer;
 `;
-const Main = styled("img")`
+const Main = styled.img`
     position: absolute;
     top: 0;
     left: 0;
@@ -159,7 +115,7 @@ const Main = styled("img")`
     height: 66.3vh;
     animation: ${opacity_main} 1s linear;
 `;
-const Dots = styled("img")`
+const Dots = styled.img`
     position: absolute;
     top: 3.8vh;
     left: 6.82vw;
@@ -167,7 +123,7 @@ const Dots = styled("img")`
     height: 58.7vh;
     animation: ${scale_up_dots} 1.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.3s both;
 `;
-const Years = styled("img")`
+const Years = styled.img`
     position: absolute;
     top: 4.9vh;
     left: 5.1vw;
@@ -178,7 +134,7 @@ const Years = styled("img")`
 
 
 // Right 
-const MoreBtn = styled('div')`
+const MoreBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,5 +164,34 @@ const MoreBtn = styled('div')`
     color: #fff;
   }
 `
+
+const Home = () => {
+  const router = useRouter();
+
+  const goToTimeline = () => {
+    router.push("/timeline");
+  };
+
+  return (
+    <Layout title='История АО «Атомтехэнерго»'>
+      <Wrap>
+        <Left>
+          <Title>История «Атомтехэнерго»</Title>
+          <EventsBtn onClick={goToTimeline}>Все события</EventsBtn>
+        </Left>
+        <Hexoid onClick={goToTimeline}>
+          <Main src="/images/history/main.png" />
+          <Dots src="/images/history/dots.png" />
+          <Years src="/images/history/years.png" />
+        </Hexoid>
+        <Right>
+          <MoreBtn onClick={goToTimeline}>Подробнее</MoreBtn>
+        </Right>
+      </Wrap>
+    </Layout>
+  )
+}
+
+
 
 export default Home

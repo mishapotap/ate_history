@@ -3,23 +3,8 @@ import styled from "styled-components"
 // Components
 import { Container, CloseButton } from "@/components/ui"
 
-const PopupWindow = ({ children, onCloseHandler, ...props }) => {
-  return (
-    <Root {...props}>
-      <ControlsContainer>
-        <CloseButton onClick={onCloseHandler} />
-      </ControlsContainer>
-      
-      <Content>
-        {children}
-      </Content>
-    </Root>
-  )
-}
-
-export default PopupWindow
-
-const Root = styled('div')`
+// Styles
+const Root = styled.div`
   position: fixed;
   top: 0;
   right: 0;
@@ -40,7 +25,23 @@ const ControlsContainer = styled(Container)`
   justify-content: flex-end;
 `
 
-const Content = styled('div')`
+const Content = styled.div`
   position: relative;
   z-index: 5;
 `
+
+const PopupWindow = ({ children, onCloseHandler, ...props }) => {
+  return (
+    <Root {...props}>
+      <ControlsContainer>
+        <CloseButton onClick={onCloseHandler} />
+      </ControlsContainer>
+      
+      <Content>
+        {children}
+      </Content>
+    </Root>
+  )
+}
+
+export default PopupWindow
